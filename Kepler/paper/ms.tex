@@ -1,0 +1,278 @@
+%%
+%% Beginning of file 'sample62.tex'
+%%
+%% Modified 2018 January
+%%
+%% This is a sample manuscript marked up using the
+%% AASTeX v6.2 LaTeX 2e macros.
+%%
+%% AASTeX is now based on Alexey Vikhlinin's emulateapj.cls 
+%% (Copyright 2000-2015).  See the classfile for details.
+
+%% AASTeX requires revtex4-1.cls (http://publish.aps.org/revtex4/) and
+%% other external packages (latexsym, graphicx, amssymb, longtable, and epsf).
+%% All of these external packages should already be present in the modern TeX 
+%% distributions.  If not they can also be obtained at www.ctan.org.
+
+%% The first piece of markup in an AASTeX v6.x document is the \documentclass
+%% command. LaTeX will ignore any data that comes before this command. The 
+%% documentclass can take an optional argument to modify the output style.
+%% The command below calls the preprint style  which will produce a tightly 
+%% typeset, one-column, single-spaced document.  It is the default and thus
+%% does not need to be explicitly stated.
+%%
+%%
+%% using aastex version 6.2
+\documentclass{aastex62}
+
+%% The default is a single spaced, 10 point font, single spaced article.
+%% There are 5 other style options available via an optional argument. They
+%% can be envoked like this:
+%%
+%% \documentclass[argument]{aastex62}
+%% 
+%% where the layout options are:
+%%
+%%  twocolumn   : two text columns, 10 point font, single spaced article.
+%%                This is the most compact and represent the final published
+%%                derived PDF copy of the accepted manuscript from the publisher
+%%  manuscript  : one text column, 12 point font, double spaced article.
+%%  preprint    : one text column, 12 point font, single spaced article.  
+%%  preprint2   : two text columns, 12 point font, single spaced article.
+%%  modern      : a stylish, single text column, 12 point font, article with
+%% 		  wider left and right margins. This uses the Daniel
+%% 		  Foreman-Mackey and David Hogg design.
+%%  RNAAS       : Preferred style for Research Notes which are by design 
+%%                lacking an abstract and brief. DO NOT use \begin{abstract}
+%%                and \end{abstract} with this style.
+%%
+%% Note that you can submit to the AAS Journals in any of these 6 styles.
+%%
+%% There are other optional arguments one can envoke to allow other stylistic
+%% actions. The available options are:
+%%
+%%  astrosymb    : Loads Astrosymb font and define \astrocommands. 
+%%  tighten      : Makes baselineskip slightly smaller, only works with 
+%%                 the twocolumn substyle.
+%%  times        : uses times font instead of the default
+%%  linenumbers  : turn on lineno package.
+%%  trackchanges : required to see the revision mark up and print its output
+%%  longauthor   : Do not use the more compressed footnote style (default) for 
+%%                 the author/collaboration/affiliations. Instead print all
+%%                 affiliation information after each name. Creates a much
+%%                 long author list but may be desirable for short author papers
+%%
+%% these can be used in any combination, e.g.
+%%
+%% \documentclass[twocolumn,linenumbers,trackchanges]{aastex62}
+%%
+%% AASTeX v6.* now includes \hyperref support. While we have built in specific
+%% defaults into the classfile you can manually override them with the
+%% \hypersetup command. For example,
+%%
+%%\hypersetup{linkcolor=red,citecolor=green,filecolor=cyan,urlcolor=magenta}
+%%
+%% will change the color of the internal links to red, the links to the
+%% bibliography to green, the file links to cyan, and the external links to
+%% magenta. Additional information on \hyperref options can be found here:
+%% https://www.tug.org/applications/hyperref/manual.html#x1-40003
+%%
+%% If you want to create your own macros, you can do so
+%% using \newcommand. Your macros should appear before
+%% the \begin{document} command.
+%%
+
+\newcommand{\vdag}{(v)^\dagger}
+\newcommand\aastex{AAS\TeX}
+\newcommand\latex{La\TeX}
+\newcommand\kepler{\emph{Kepler}\,}
+\newcommand\ktwo{\emph{K2}\,}
+
+\usepackage{xcolor, fontawesome}
+\definecolor{twitterblue}{RGB}{64,153,255}
+\newcommand\twitter[1]{\href{https://twitter.com/#1 }{\textcolor{twitterblue}{\faTwitter}\,\tt \textcolor{twitterblue}{@#1}}}
+
+
+%% Tells LaTeX to search for image files in the 
+%% current directory as well as in the figures/ folder.
+\graphicspath{{./}{figures/}}
+
+%% Reintroduced the \received and \accepted commands from AASTeX v5.2
+\received{January 1, 2018}
+\revised{January 7, 2018}
+\accepted{\today}
+%% Command to document which AAS Journal the manuscript was submitted to.
+%% Adds "Submitted to " the arguement.
+\submitjournal{ApJ}
+
+%% Mark up commands to limit the number of authors on the front page.
+%% Note that in AASTeX v6.2 a \collaboration call (see below) counts as
+%% an author in this case.
+%
+%\AuthorCollaborationLimit=3
+%
+%% Will only show Schwarz, Muench and "the AAS Journals Data Scientist 
+%% collaboration" on the front page of this example manuscript.
+%%
+%% Note that all of the author will be shown in the published article.
+%% This feature is meant to be used prior to acceptance to make the
+%% front end of a long author article more manageable. Please do not use
+%% this functionality for manuscripts with less than 20 authors. Conversely,
+%% please do use this when the number of authors exceeds 40.
+%%
+%% Use \allauthors at the manuscript end to show the full author list.
+%% This command should only be used with \AuthorCollaborationLimit is used.
+
+%% The following command can be used to set the latex table counters.  It
+%% is needed in this document because it uses a mix of latex tabular and
+%% AASTeX deluxetables.  In general it should not be needed.
+%\setcounter{table}{1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% The following section outlines numerous optional output that
+%% can be displayed in the front matter or as running meta-data.
+%%
+%% If you wish, you may supply running head information, although
+%% this information may be modified by the editorial offices.
+\shorttitle{Transits Across Pulsating Stars}
+\shortauthors{B. J. S. Pope et al.}
+%%
+%% You can add a light gray and diagonal water-mark to the first page 
+%% with this command:
+% \watermark{text}
+%% where "text", e.g. DRAFT, is the text to appear.  If the text is 
+%% long you can control the water-mark size with:
+%  \setwatermarkfontsize{dimension}
+%% where dimension is any recognized LaTeX dimension, e.g. pt, in, etc.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% This is the end of the preamble.  Indicate the beginning of the
+%% manuscript itself with \begin{document}.
+
+\begin{document}
+
+\title{A Search for Transits Across Pulsating Stars}
+
+\correspondingauthor{Benjamin J. S. Pope \twitter{fringetracker}}
+\email{benjamin.pope@nyu}
+
+\author[0000-0003-2595-9114]{Benjamin J. S. Pope}
+\affiliation{Center for Cosmology and Particle Physics, Department of Physics, New York University, 726 Broadway, New York, NY 10003, USA}
+\affiliation{NASA Sagan Fellow}
+
+\author{Simon J. Murphy}
+\affiliation{Sydney Institute for Astronomy, School of Physics, University of Sydney, Sydney, NSW 2006, Australia}
+\affiliation{Stellar Astrophysics Centre, Department of Physics and Astronomy, Aarhus University, DK-8000 Aarhus C, Denmark}
+
+\author[0000-0003-2866-9403]{David W. Hogg}
+\affiliation{Center for Cosmology and Particle Physics, Department of Physics, New York University, 726 Broadway, New York, NY 10003, USA}
+\affiliation{Center for Data Science, New York University, 60 Fifth Ave, New York, NY 10011, USA}
+\affiliation{Max-Planck-Institut f\"{u}r Astronomie, K\"{o}nigstuhl 17, D-69117 Heidelberg}
+\affiliation{Flatiron Institute, 162 Fifth Ave, New York, NY 10010, USA}
+
+\author{friends}
+%% Note that the \and command from previous versions of AASTeX is now
+%% depreciated in this version as it is no longer necessary. AASTeX 
+%% automatically takes care of all commas and "and"s between authors names.
+
+%% AASTeX 6.2 has the new \collaboration and \nocollaboration commands to
+%% provide the collaboration status of a group of authors. These commands 
+%% can be used either before or after the list of corresponding authors. The
+%% argument for \collaboration is the collaboration identifier. Authors are
+%% encouraged to surround collaboration identifiers with ()s. The 
+%% \nocollaboration command takes no argument and exists to indicate that
+%% the nearby authors are not part of surrounding collaborations.
+
+%% Mark off the abstract in the ``abstract'' environment. 
+\begin{abstract}
+Planets around hot stars have until recently been hard to detect, because many hot stars vary with coherent pulsations that can hide the small planetary signals both in RV and in photometric transit.
+
+By modelling out these coherent oscillations and correcting for residual systematics, we conduct a deep search of all hot pulsating stars in \kepler to find eclipsing binaries and planetary transits.
+
+The methods applied here generalize naturally to the much larger samples of classical pulsators in \ktwo and TESS.
+\end{abstract}
+
+%% Keywords should appear after the \end{abstract} command. 
+%% See the online documentation for the full list of available subject
+%% keywords and the rules for their use.
+% \keywords{editorials, notices --- 
+% miscellaneous --- catalogs --- surveys}
+
+
+\section{Introduction} \label{sec:intro}
+
+Only three planets have been confirmed to transit stars hotter than 8000~K: KELT-9, KELT-20, and \kepler-1115. There are few planets known to transit upper main sequence stars (spectral types OBA) because of the stars' intrinsic rarity, and because many such stars are intrinsically highly variable both in photometry and radial velocity.
+
+\citet{sowicka2017} conducted a search for transits around pulsating stars in \kepler by first modelling the stellar pulsations and then subtracting these. 
+This search was limited to stars with short-cadence observations for stars with temperatures $6000 \text{K} < T < 8500~\text{K}$, and found only two candidates: KIC 5613330 and KIC 8197761, the latter of which was confirmed by RV to be an eclipsing binary. This neglected both the high-temperature end of the stellar population and the many stars for which short-cadence observations were not obtained.
+
+We adapt the methods of \citet{sowicka2017} to the entire \kepler sample of hot stars (temperature range TBD), including long-cadence only targets. We especially focus on looking for eclipses of those pulsating stars identified by \citet{murphy2018} as binaries from the phase-modulation of their pulsations due to the R\o mer delay or light travel time effect (LTTE), finding several of these to be `heartbeat stars.'
+
+We believe our results here are a useful pathfinder for deploying similar methods at-scale to data from \kepler-2 (K2) and especially the Transiting Exoplanet Survey Satellite (TESS), in which many thousands more hot stars than in \kepler either have been or will be observed.
+
+In Section~\ref{algorithm} we outline the flow of the methods used here.
+
+\newpage
+
+\section{The Algorithm}
+\label{algorithm}
+
+\begin{itemize}
+	\item \textbf{Read in data}
+	\begin{itemize}
+		\item Read in all quarters (storing quarter label).
+		\item Normalize and stitch.
+	\end{itemize}
+	\item \textbf{CLEAN Algorithm} (iterative sine fitting)
+	\begin{itemize}
+		\item Use Astropy \citep{astropy} Lomb-Scargle \citep{lomb,scargle,vanderplas} coarsely to find best frequency in range from $\sim 1 c/d$ to Nyquist.
+		\item If a significant peak is found ($\log{FAP} < -12$), use L-S on a fine grid in its vicinity to nail the frequency.
+		\item Then fit a sinusoid at that frequency and subtract. 
+		\item Repeat until no more significant peaks are found or 60 sinusoids are subtracted.
+	\end{itemize}
+	\item \textbf{Pre-Search Conditioning}
+	\begin{itemize}
+		\item Subtract sum-of-sinusoids model from data.
+		\item Run \textsc{OxKeplerSC} \citep{oxksc} on each quarter to fit co-trending basis vectors (CBVs), and re-stitch.
+		\item Re-fit sine model with CLEAN to data with new systematics correction.
+	\end{itemize}
+	\item \textbf{Transit Search}
+	\begin{itemize}
+		\item Run modified version of the Oxford planet search code \textsc{k2ps} \citep{pope2016,k2ps} to do a box-least-squares (BLS) search. 
+		\item Produce vetting diagrams, including:
+		\begin{itemize}
+			\item Raw light curve with CBVs/sinusoids/both subtracted.
+			\item Periodogram of full PDC light curve, with subtracted frequencies highlighted.
+			\item Periodogram of residuals.
+			\item Folded PDC light curve on main period.
+			\item Folded residual light curve on BLS best period.
+			\item BLS plot.
+			\item Odd and even transit light curves.
+			\item Likelihood per transit.
+			\item Transit parameters.
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+
+\newpage
+
+% \includepdf[width=\textwidth]{../notebooks/plots_8197761.pdf}
+\includegraphics[width=\textwidth]{../notebooks/plots_8197761.png}
+
+\bibliography{ms}
+
+
+%% This command is needed to show the entire author+affilation list when
+%% the collaboration and author truncation commands are used.  It has to
+%% go at the end of the manuscript.
+%\allauthors
+
+%% Include this line if you are using the \added, \replaced, \deleted
+%% commands to see a summary list of all changes at the end of the article.
+%\listofchanges
+
+\end{document}
+
+% End of file `sample62.tex'.
